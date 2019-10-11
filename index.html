@@ -22,8 +22,8 @@
             });
         }
 
-        function logout(){
-            FB.logout(function(response) {
+        function logout() {
+            FB.logout(function (response) {
                 alert(response);
             });
         }
@@ -39,6 +39,9 @@
     <h1>Hello Flower Hack</h1>
     <a href="privacyPolicy.html">Privacy Policy</a>
     <br>
-    <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
-    </fb:login-button>
+    <br>
+    <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">Login</fb:login-button>
+    <br>
+    <button onclick="logout();">Log Out</button>
+    <br>
 </body>
