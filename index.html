@@ -28,6 +28,17 @@
             });
         }
 
+        function postToPage() {
+            FB.api(
+                '/109376637142259/feed/',
+                'POST',
+                { "message": "make a new post" },
+                function (response) {
+                    console.log(response);
+                }
+            );
+        }
+
         (function (d, s, id) {
             var js, fjs = d.getElementsByTagName(s)[0];
             if (d.getElementById(id)) { return; }
@@ -44,5 +55,8 @@
     <br>
     <br>
     <button onclick="logout();">Log Out</button>
+    <br>
+    <br>
+    <button onclick="postToPage();">Post story to page</button>
     <br>
 </body>
