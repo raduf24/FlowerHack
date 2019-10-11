@@ -30,7 +30,7 @@
 
         function postToPage() {
             FB.api(
-                '/109376637142259/feed/',
+                '/me/feed/',
                 'POST',
                 { "message": "make a new post" },
                 function (response) {
@@ -38,6 +38,8 @@
                 }
             );
         }
+
+        
 
         (function (d, s, id) {
             var js, fjs = d.getElementsByTagName(s)[0];
