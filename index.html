@@ -28,13 +28,27 @@
             });
         }
 
-        function postToUserFeed() {
+        function postToPage() {
             FB.api(
-                '/101642944588891/feed/',
-                'POST',
-                { "message": "make a new post on user feed" },
+                '/me/accounts',
+                'GET',
+                {},
                 function (response) {
-                    console.log(response);
+                    var access_token = response.data[0].access_token;
+                    var page_url = '/' + response.data[0].id + '/feed/';
+
+                    FB.api(
+                        page_url,
+                        'POST',
+                        {
+                            "message": "make a new post",
+                            "access_token": access_token
+                        },
+                        function (response) {
+                            console.log(response);
+                        }
+                    );
+
                 }
             );
         }
@@ -57,6 +71,6 @@
     <button onclick="logout();">Log Out</button>
     <br>
     <br>
-    <button onclick="postToUserFeed();">Post story to user</button>
+    <button onclick="postToPage();">Post to page</button>
     <br>
 </body>
