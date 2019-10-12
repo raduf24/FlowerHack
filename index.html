@@ -19,6 +19,9 @@
             FB.AppEvents.logPageView();
             FB.getLoginStatus(function (response) {
                 console.log(response);
+                if (response.status === "connected"){
+                    window.location.href = "flower.html";
+                }
             });
 
 
@@ -27,59 +30,20 @@
         function checkLoginState() {
             FB.getLoginStatus(function (response) {
                 console.log(response);
-            });
-        }
-
-        function logout() {
-            FB.logout(function (response) {
-                console.log(response);
-            });
-        }
-
-        function postToPage() {
-            FB.api(
-                '/me/accounts',
-                'GET',
-                {},
-                function (response) {
-                    var access_token = response.data[0].access_token;
-                    var page_url = '/' + response.data[0].id + '/feed/';
-
-                    FB.api(
-                        page_url,
-                        'POST',
-                        {
-                            "message": "make a new post like a boss with the user from the app",
-                            "access_token": access_token
-                        },
-                        function (response) {
-                            console.log(response);
-                        }
-                    );
-
+                if (response.status === "connected"){
+                    window.location.href = "flower.html";
                 }
-            );
+            });
         }
+
+
     </script>
-    <img src="FlowerHackLogo.png"/>
-    <img src="FlowerHackScreen.png"/>
-    <a href="privacyPolicy.html">Privacy Policy</a>
+    <img src="FlowerHackLogo.png" />
+
     <br>
     <br>
     <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">Login</fb:login-button>
+    <a href="privacyPolicy.html">Privacy Policy</a>
     <br>
-    <br>
-    <button onclick="logout();">Log Out</button>
-    <br>
-    <br>
-    <button onclick="postToPage();">Post to page</button>
-    <br>
-    <br>
-    <img src="rose-1.png"/>
-    <div class="fb-share-button" data-href="rose-1.png" data-layout="button" data-size="small"><a target="_blank" href="rose-1.png%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Blabber t&#039; yer mates</a></div>
-    <br>
-    <br>
-    <img src="generatedFlower.png"/>
-    <div class="fb-share-button" data-href="generatedFlower.png" data-layout="button" data-size="small"><a target="_blank" href="generatedFlower.png%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Blabber t&#039; yer mates</a></div>
-    <br>
+
 </body>
